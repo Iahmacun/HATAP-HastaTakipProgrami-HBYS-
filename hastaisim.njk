@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doktor Paneli</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2E5075; 
+            margin: 0;
+            padding: 0;
+        }
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            border: none;
+            padding: 12px;
+            text-align: center;
+        }
+        .table th {
+            background-color: #1976D2; 
+            color: #fff;
+            font-weight: bold;
+        }
+        .table tbody {
+            background-color: #E0E0E0; 
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2; 
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            background: #1976D2; 
+            color: #ffffff; 
+            transition: background-color 0.3s ease;
+            margin-bottom: 5px;
+            border-radius: 5px; 
+        }
+        .btn:hover {
+            background-color: #1565C0; 
+            text-decoration: none;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343A40; 
+            padding: 10px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .footer hr {
+            border-top: 2px solid #fff; 
+            margin-bottom: 10px;
+        }
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #37474F; 
+        }
+        .age {
+            font-size: 16px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        .title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1976D2; 
+            margin-bottom: 20px;
+        }
+        .logout-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            background: #D32F2F; 
+            color: #ffffff; 
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border-radius: 5px; 
+        }
+        .logout-btn:hover {
+            background-color: #B71C1C; 
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">Doktor Paneli</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Kayıtlı Hastalar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>
+                        <div class="name">{{ item.firstname }} {{ item.lastname }}</div>
+                        <div class="age">Yaş: {{ item.age }}</div>
+                        <a href="/hastabilgi/{{item.id}}" class="btn">Detaylar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/login" class="logout-btn">Çıkış Yap</a>
+</div>
+
+<div class="footer">
+    <hr>
+    <p>SMLProje Mustafa KAYACIOĞLU-Kerem AYAZ</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

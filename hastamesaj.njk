@@ -1,0 +1,120 @@
+{% extends "xbase.njk" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<title>Hasta Mesajları</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.message-panel {
+    margin-top: 20px;
+}
+
+.message {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF5733; 
+
+.message-date {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.message-body {
+    font-size: 16px;
+    color: #333;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: #343A40;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer hr {
+    border-top: 2px solid #fff;
+    margin-bottom: 10px;
+}
+
+.hastabilgi-h1 {
+    text-align: center;
+    color: #FF5733; 
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 class="hastabilgi-h1">Hasta Mesajları</h1>
+
+<div class="message-panel">
+    {% for message in messages %}
+    <div class="message">
+        <div class="message-header">
+            <div class="message-title">{{ message.title }}</div>
+            <div class="message-date">{{ message.date | date('d-m-Y H:i') }}</div>
+        </div>
+        <div class="message-body">
+            {{ message.body }}
+        </div>
+    </div>
+    {% else %}
+    <div class="message">
+        <div class="message-body">
+            Hiç mesaj bulunmamaktadır.
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

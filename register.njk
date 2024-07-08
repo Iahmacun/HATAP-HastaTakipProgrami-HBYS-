@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayıt Ekranı</title>
+  <style>
+   
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kayıt Ekranı</h1>
+    
+   
+    <% if (error) { %>
+      <p class="error-message"><%= error %></p>
+    <% } else if (success) { %>
+      <p class="success-message"><%= success %></p>
+    <% } %>
+
+   
+    <form id="registerForm" method="POST" action="/register">  
+      <label for="username">Kullanıcı Adı:</label>   
+      <input type="text" id="username" name="username" required>  
+      
+      <label for="password">Şifre:</label>   
+      <input type="password" id="password" name="password" required>  
+      
+      <label for="confirmPassword">Şifreyi Onayla:</label>   
+      <input type="password" id="confirmPassword" name="confirmPassword" required>  
+      
+      <button type="submit">Kayıt Ol</button>
+      <p class="form-toggle" onclick="toggleForm()">Giriş Yap</p>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+
+      if (loginForm.style.display === "none") {
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+      } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

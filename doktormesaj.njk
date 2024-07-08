@@ -1,0 +1,39 @@
+<!-- Doktor Arayüzü -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doktor Arayüzü</title>
+    <script src="https://cdn.socket.io/socket.io-4.1.3.min.js"></script>
+</head>
+<body>
+    <h1>Doktor Arayüzü</h1>
+    <ul id="doctorMessageList"></ul>
+    <input type="text" id="doctorMessageInput">
+    <button onclick="sendDoctorMessage()">Mesaj Gönder</button>
+
+    <script>
+        const socket = io('http://localhost:3000');
+
+        
+        socket.emit('joinDoctorRoom');
+
+        
+        socket.on('message', (message) => {
+            const messageList = document.getElementById('doctorMessageList');
+            const li = document.createElement('li');
+            li.textContent = message;
+            messageList.appendChild(li);
+        });
+
+        
+        function sendDoctorMessage() {
+            const messageInput = document.getElementById('doctorMessageInput');
+            const message = messageInput.value;
+            socket.emit('doctorMessage', message);
+            messageInput.value = ''; 
+        }
+    </script>
+</body>
+</html>

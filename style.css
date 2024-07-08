@@ -1,0 +1,50 @@
+/* public/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  #chat-container {
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  #message-form {
+    display: flex;
+    padding: 10px;
+  }
+  
+  #message-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

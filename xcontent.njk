@@ -1,0 +1,617 @@
+{% extends "xbase.njk" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Hasta Bilgi Ekranı</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2E5075; 
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-bottom: 40px;
+}
+
+ .tabledata {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .tabledata th, .tabledata td {
+            padding: 16px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .tabledata th {
+            background-color: #1976d3;
+            color: white;
+            font-size: 18px;
+        }
+        .tabledata tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .tabledata tr:hover {
+            background-color: #e0e0e0;
+        }
+        .tabledata tr:first-child th:first-child {
+            border-top-left-radius: 8px;
+        }
+        .tabledata tr:first-child th:last-child {
+            border-top-right-radius: 8px;
+        }
+        .tabledata tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+        .tabledata tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+        .btn {
+            background-color: #1976d3;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-danger {
+            background-color: #d32f2f;
+        }
+
+input[type="number"], input[type="text"] {
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #343A40;
+      padding: 10px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+.hastabilgi-h1 {
+    text-align: center;
+    color: #1976D2;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.warning-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFEB3B;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.message-panel {
+    margin-top: 20px;
+}
+
+.message {
+    background-color: #E3F2FD; 
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #dee2e6;
+    
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1976D2; 
+}
+
+.message-date {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.message-body {
+    font-size: 16px;
+    color: #333;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-body {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.chat-footer input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.btn-close {
+    color: #fff;
+}
+
+.btn-close:hover {
+    color: #ccc;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+}
+        .table-header {
+                text-align: center;
+    color: #1976D2;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+        }
+        #messagesTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #messagesTable th, #messagesTable td {
+            padding: 16px;
+            text-align: left;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        #messagesTable th {
+            background-color: #1976d3;
+            color: white;
+            font-size: 20px;
+        }
+        #messagesTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        #messagesTable tr:hover {
+            background-color: #e0e0e0;
+        }
+        #messagesTable tr:first-child th:first-child {
+            border-top-left-radius: 8px;
+        }
+        #messagesTable tr:first-child th:last-child {
+            border-top-right-radius: 8px;
+        }
+        #messagesTable tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+        #messagesTable tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+        .form-group {
+    font-size: 18px; 
+}
+.form-control {
+    font-size: 16px; 
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="hastabilgi-h1">Hasta Bilgi Giriş Formu</h1>
+    <form id="hastaForm" action="." method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="seker">Şeker:</label>
+            <input type="number" id="seker" name="seker" step="0.01" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="tansiyon">Tansiyon:</label>
+            <input type="text" id="tansiyon" name="tansiyon" step="0.01" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="saturasyon">Saturasyon:</label>
+            <input type="number" id="saturasyon" name="saturasyon" step="0.01" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ates">Ateş:</label>
+            <input type="number" id="ates" name="ates" step="0.01" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nabiz">Nabız:</label>
+            <input type="number" id="nabiz" name="nabiz" step="0.01" class="form-control">
+        </div>
+        <button type="submit" class="btn">Kaydet</button>
+        <div class="text-center mt-3">
+    <button type="button" class="btn btn-primary" id="open-chat-button" onclick="toggleChat(); toggleOpenChatButton();">Yardım</button>
+</div>
+    </form>
+
+    <table class="tabledata table">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Şeker</th>
+                <th>Tansiyon</th>
+                <th>Saturasyon</th>
+                <th>Ateş</th>
+                <th>Nabız</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.date | date }}</td>
+            <td>{{ item.seker }}</td>
+            <td>{{ item.tansiyon }}</td>
+            <td>{{ item.saturasyon }}</td>
+            <td>{{ item.ates }}</td>
+            <td>{{ item.nabiz }}</td>
+            <td><button onClick="askDelete({{ item.id }})" class="btn btn-danger">Sil</button></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7">Kayıt Yok</td>
+        </tr>
+        {% endfor %}
+
+        
+        </tbody>
+    </table>
+<hr class="border border-primary border-3 opacity-75">
+
+
+<h2 class="table-header">Doktor Mesajları</h2>
+<table id="messagesTable">
+    <thead>
+        <tr>
+            <th>Tarih</th>
+            <th>Mesaj</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in datamsg %}
+        <tr>
+            <td>{{ item.date | date('YYYY-MM-DD HH:mm:ss') }}</td>
+            <td>{{ item.message }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+<div id="chat-container" class="chat-container">
+    <div class="chat-header">
+        DOKBOT bana soru sor
+        <button type="button" class="btn btn-sm btn-danger btn-close" onclick="toggleChat()">x</button>
+    </div>
+    
+    <div class="chat-body" id="chat-output"></div>
+    <div class="chat-footer">
+        <input type="text" id="user-input" class="form-control user-input" placeholder="Sorularınızı buraya yazın...">
+        <button id="send-button" class="btn btn-primary">Gönder</button>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="containers">
+        <p>© 2024 Hasta Bilgi Ekranı. Tüm hakları saklıdır.</p>
+    </div>
+</footer>
+<script>
+function confirmDelete() {
+    // Buraya silme işlemini gerçekleştirecek kodu ekleyebilirsiniz.
+    alert("Silme işlemi onaylandı!");
+}
+
+function cancelDelete() {
+    // Buraya silme işleminin iptal edildiğine dair geri bildirim kodunu ekleyebilirsiniz.
+    alert("Silme işlemi iptal edildi!");
+}
+</script>
+    <script>
+        async function fetchMessages() {
+            try {
+                const response = await fetch('/api/messages');
+                const data = await response.json();
+                const tableBody = document.querySelector('#messagesTable tbody');
+                tableBody.innerHTML = ''; 
+
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    const dateCell = document.createElement('td');
+                    const messageCell = document.createElement('td');
+
+                    const date = new Date(item.date);
+                    dateCell.textContent = date.toISOString().split('T')[0] + ' ' + date.toTimeString().split(' ')[0];
+                    messageCell.textContent = item.message;
+
+                    row.appendChild(dateCell);
+                    row.appendChild(messageCell);
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Mesajlar alınamadı:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchMessages();
+            setInterval(fetchMessages, 5000); 
+        });
+    </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+const chatOutput = document.getElementById('chat-output');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+
+//YAPAY ZEKA  SORULAR
+const botResponses = {
+    "merhaba": "Merhaba! Size nasıl yardımcı olabilirim?",
+    "nasılsınız": "Ben bir botum, sizinle konuşmak için buradayım :)",
+    "sağlık nedir": "Sağlık, fiziksel, zihinsel ve sosyal olarak tam bir iyilik hali olarak tanımlanır.",
+    "nasıl sağlıklı kalabilirim": "Sağlıklı kalmak için dengeli beslenmek, düzenli egzersiz yapmak ve stresten uzak durmak önemlidir.",
+    "hangi besinler sağlıklıdır": "Sağlıklı beslenme için meyve, sebze, tam tahıllar, protein kaynakları ve sağlıklı yağlar tüketilmelidir.",
+    "sigara sağlığa zararlı mıdır": "Evet, sigara içmek birçok sağlık sorununa yol açabilir ve ciddi hastalıklara neden olabilir.",
+    "ne kadar su içmeliyim": "Günlük olarak en az 8 bardak su içmek genellikle önerilir, ancak ihtiyaçlar kişiden kişiye değişebilir.",
+    "ne kadar uyumalıyım": "Yetişkinler genellikle günde 7-9 saat uyku almaları önerilir.",
+    "hangi egzersizler sağlıklıdır": "Yürüyüş, koşu, yüzme, bisiklet sürme gibi aerobik egzersizler ve ağırlık antrenmanları sağlıklıdır.",
+    "hangi testler düzenli olarak yapılmalıdır": "Kan basıncı ölçümü, kolesterol seviyesi testi, kanser tarama testleri ve diğer sağlık kontrolleri düzenli olarak yapılmalıdır.",
+    "hangi vitaminler önemlidir": "Vitamin D, C, B12, demir, kalsiyum gibi birçok vitamin ve mineral vücut için önemlidir.",
+    "hangi durumlarda doktora gitmeliyim": "Ağır bir yaralanma, ani şiddetli ağrılar, uzun süren ateş, belirli semptomlar veya sağlık durumunda belirgin bir değişiklik olduğunda doktora gitmek önemlidir.",
+    "hangi yaşta kanser taraması yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "ne sıklıkla doktora gitmeliyim": "Düzenli sağlık kontrolleri yılda bir veya iki kez önerilir, ancak sağlık durumunuza bağlı olarak daha sık ziyaretler gerekebilir.",
+    "hangi egzersizler kalp sağlığı için iyidir": "Aerobik egzersizler, yürüyüş, koşu, bisiklet sürme gibi egzersizler kalp sağlığı için iyidir.",
+    "hangi yaşta kolesterol testi yaptırmalıyım": "Kolesterol testi genellikle 20 yaşından itibaren yapılmalıdır, ancak risk faktörlerine veya aile geçmişine bağlı olarak daha erken yaşlarda yapılabilir.",
+    "sağlıklı bir diyet nasıl olmalıdır": "Sağlıklı bir diyet, çeşitli meyve, sebze, tam tahıllar, protein kaynakları ve sağlıklı yağları içermelidir.",
+    "kas ve iskelet sağlığı için hangi egzersizler iyidir": "Kas ve iskelet sağlığı için direnç antrenmanları, yani ağırlık kaldırma veya vücut ağırlığı egzersizleri iyidir.",
+    "hangi sporlar sağlık için iyidir": "Yüzme, basketbol, tenis, futbol gibi birçok spor sağlık için iyidir. En önemlisi, keyif aldığınız bir spora düzenli olarak katılmaktır.",
+    "sağlık kontrolü ne zaman yapılmalıdır": "Sağlık kontrolü herkes için farklı olabilir, ancak düzenli sağlık kontrolleri genellikle yılda bir veya iki kez önerilir.",
+    "hangi yaşta kanser taraması yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta meme kanseri taraması yapılmalıdır": "Meme kanseri taraması genellikle 40 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta prostat kanseri taraması yapılmalıdır": "Prostat kanseri taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "sağlık hizmetlerine nasıl erişebilirim": "Sağlık hizmetlerine erişim için birinci basamak sağlık kuruluşlarına başvurabilir veya bir doktor randevusu alabilirsiniz.",
+    "teşekkürler": "Rica ederim! Başka bir sorunuz var mı?",
+    "görüşürüz": "Hoşça kalın, tekrar görüşmek üzere!",
+    "elma ne kadar vitamin içerir": "Elma, C vitamini ve lif bakımından zengindir.",
+    "hangi gıdalar protein içerir": "Kırmızı et, tavuk, balık, yumurta, süt ürünleri ve baklagiller protein kaynaklarıdır.",
+    "ne zaman doktora gitmeliyim": "Ağır bir yaralanma, ani şiddetli ağrılar, uzun süren ateş, belirli semptomlar veya sağlık durumunda belirgin bir değişiklik olduğunda doktora gitmek önemlidir.",
+    "hangi yaşta hangi kanser taramaları yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta meme kanseri taraması yapılmalıdır": "Meme kanseri taraması genellikle 40 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta prostat kanseri taraması yapılmalıdır": "Prostat kanseri taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta kolon kanseri taraması yapılmalıdır": "Kolon kanseri taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "sağlık hizmetlerine nasıl erişebilirim": "Sağlık hizmetlerine erişim için birinci basamak sağlık kuruluşlarına başvurabilir veya bir doktor randevusu alabilirsiniz.",
+    "sağlık kontrolü ne zaman yapılmalıdır": "Sağlık kontrolü herkes için farklı olabilir, ancak düzenli sağlık kontrolleri genellikle yılda bir veya iki kez önerilir.",
+    "vücudumuzdaki en büyük organ nedir": "Yaklaşık olarak 1,5 kg ağırlığında olan ve vücudun en büyük organı olma özelliği taşıyan karaciğerin yeri, karnın sağ üst köşesinde, göğüs kafesinin hemen altında bulunur.",
+    "kanser nedir": "Kanser, hücrelerin anormal bir şekilde büyüyüp çoğalması sonucu oluşan bir hastalıktır.",
+    "kalp krizi belirtileri nelerdir": "Kalp krizi belirtileri arasında göğüs ağrısı, nefes darlığı, terleme, mide bulantısı ve baş dönmesi bulunabilir.",
+    "hangi gıdalar omega-3 yağ asidi içerir": "Balık yağı, somon, keten tohumu gibi gıdalar omega-3 yağ asidi bakımından zengindir.",
+    "insülin nedir": "İnsülin, kan şekerini düzenlemeye yardımcı olan bir hormondur.",
+    "ne kadar su içmeliyim": "Günlük olarak en az 8 bardak su içmek genellikle önerilir, ancak ihtiyaçlar kişiden kişiye değişebilir.",
+    "hangi egzersizler kalp sağlığı için iyidir": "Aerobik egzersizler, yürüyüş, koşu, bisiklet sürme gibi egzersizler kalp sağlığı için iyidir.",
+    "hangi yaşta hangi kanser taramaları yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "ne sıklıkla doktora gitmeliyim": "Düzenli sağlık kontrolleri yılda bir veya iki kez önerilir, ancak sağlık durumunuza bağlı olarak daha sık ziyaretler gerekebilir.",
+    "sağlıklı bir diyet nasıl olmalıdır": "Sağlıklı bir diyet, çeşitli meyve, sebze, tam tahıllar, protein kaynakları ve sağlıklı yağları içermelidir.",
+    "sağlık hizmetlerine nasıl erişebilirim": "Sağlık hizmetlerine erişim için birinci basamak sağlık kuruluşlarına başvurabilir veya bir doktor randevusu alabilirsiniz.",
+    "gripten nasıl korunabilirim": "Gripten korunmak için el yıkama, maske takma, hasta kişilerle teması azaltma gibi önlemler alabilirsiniz.",
+    "hangi yaşta osteoporoz taraması yapılmalıdır": "Osteoporoz taraması genellikle menopoz sonrası kadınlarda başlar, ancak düşük kemik yoğunluğu riski olan kişilerde daha erken yapılabilir.",
+    "sağlıklı bir uyku nasıl olmalıdır": "Sağlıklı bir uyku için düzenli uyku saatleri, rahat bir uyku ortamı ve stresten uzak durmak önemlidir.",
+    "güneş koruyucu kullanımı neden önemlidir": "Güneş koruyucu kullanımı cilt kanseri ve erken yaşlanma gibi cilt problemlerini önlemeye yardımcı olabilir.",
+    "ne sıklıkla egzersiz yapmalıyım": "Haftada en az 150 dakika orta şiddette veya 75 dakika yüksek şiddette aerobik egzersiz yapmak önerilir.",
+    "hangi yaşta hangi kanser taramaları yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "sağlıklı bir diyet nasıl olmalıdır": "Sağlıklı bir diyet, çeşitli meyve, sebze, tam tahıllar, protein kaynakları ve sağlıklı yağları içermelidir.",
+    "sağlık hizmetlerine nasıl erişebilirim": "Sağlık hizmetlerine erişim için birinci basamak sağlık kuruluşlarına başvurabilir veya bir doktor randevusu alabilirsiniz.",
+    "hangi yaşta hangi kanser taramaları yapılmalıdır": "Kanser taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta meme kanseri taraması yapılmalıdır": "Meme kanseri taraması genellikle 40 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "hangi yaşta prostat kanseri taraması yapılmalıdır": "Prostat kanseri taraması genellikle 50 yaşından sonra başlar, ancak aile geçmişi veya risk faktörleri varsa daha erken yaşlarda yapılabilir.",
+    "bugün ne yapıyorsun": "Ben bir yapay zeka asistanıyım ve size yardımcı olmak için buradayım.",
+    "nasılsın": "Ben bir yapay zeka olduğum için duygularım yok, ama size yardımcı olmak için buradayım :)",
+    "bugün ne pişirsem": "Bugün için birkaç tarif önerebilirim. Mesela makarna, salata veya omlet yapabilirsiniz.",
+    "bugün hangi filmi izlesem": "Bugün için bir film izlemek istiyorsanız, komedi veya drama türünden bir film seçebilirsiniz.",
+    "en son ne zaman yağmur yağdı": "En son yağmur geçen hafta cuma günü yağdı.",
+    "günlük spor yapmak neden önemli": "Günlük spor yapmak fiziksel ve zihinsel sağlığınızı korumak için önemlidir. Düzenli egzersiz yapmak stresi azaltır ve enerjinizi artırır.",
+    "günlük ne kadar su içmeliyim": "Günlük olarak en az 8 bardak su içmek genellikle önerilir. Ancak su ihtiyacı kişiden kişiye değişebilir, bu yüzden vücudunuzu dinleyin ve susadığınızda su için.",
+    "günlük kaç saat uyumalıyım": "Yetişkinler genellikle günde 7-9 saat uyku almaları önerilir. Ancak herkesin uyku ihtiyacı farklıdır, bu yüzden kendinizi dinleyin ve ne kadar uyuduğunuzda dinlenmiş hissettiğinizi belirleyin.",
+    "günlük ne kadar yürüyüş yapmalıyım": "Günlük olarak en az 30 dakika yürüyüş yapmak, fiziksel sağlığınızı korumak için önemlidir. Yürüyüş, kalp sağlığınızı destekler, kilo vermenize yardımcı olur ve stresi azaltır.",
+    "günlük ne kadar meyve ve sebze tüketmeliyim": "Günlük olarak en az 5 porsiyon meyve ve sebze tüketmek, vücudunuzun ihtiyaç duyduğu vitamin ve mineralleri almanıza yardımcı olur. Çeşitli renklerde meyve ve sebze tüketmeye özen gösterin.",
+    "günlük ne kadar egzersiz yapmalıyım": "Günlük olarak en az 30 dakika orta şiddette aerobik egzersiz yapmak önerilir. Bu, yürüyüş, bisiklet sürme veya dans gibi aktiviteleri içerebilir.", 
+    
+    // Yeni soru-cevapların eklenecek yer
+};
+
+    function toggleOpenChatButton() {
+        var openChatButton = document.getElementById("open-chat-button");
+        if (openChatButton.innerHTML === "Yardım") {
+        } else {
+            openChatButton.innerHTML = "Yardım";
+        }
+    }
+
+function sendMessage() {
+    const userMessage = userInput.value.toLowerCase(); 
+    displayMessage('Sen', userMessage);
+    const botResponse = botResponses[userMessage];
+    if (botResponse) {
+        displayMessage('Bot', botResponse);
+    } else {
+        displayMessage('Bot', 'Üzgünüm, anlamadım. Lütfen tekrar deneyin.');
+    }
+    userInput.value = '';
+}
+    document.getElementById("user-input").addEventListener("keyup", function(event) {
+        
+        if (event.keyCode === 13) {
+            
+            sendMessage();
+        }
+    });
+
+function displayMessage(sender, message) {
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatOutput.appendChild(messageElement);
+}
+
+sendButton.addEventListener('click', sendMessage);
+
+    function toggleChat() {
+        var chatContainer = document.getElementById("chat-container");
+        if (chatContainer.style.display === "none") {
+            chatContainer.style.display = "block";
+        } else {
+            chatContainer.style.display = "none";
+        }
+    }
+
+  function toggleChat() {
+    var chatContainer = document.getElementById('chat-container');
+    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleOpenChatButton() {
+    var openChatButton = document.getElementById('open-chat-button');
+    openChatButton.textContent = openChatButton.textContent === 'Yardım' ? 'Yardım' : 'Yardım';
+}
+ async function askDelete(id) {
+  if (confirm('Kayıt silinecek, emin misiniz?') == true) {
+    const response = await fetch("/delete/" + id)
+    window.location.href = '/'
+  } else {
+  }
+}
+
+function toggleChat() {
+    var chatContainer = document.getElementById('chat-container');
+    chatContainer.style.display = chatContainer.style.display === 'none' ? 'block' : 'none';
+}
+
+document.getElementById('send-button').addEventListener('click', function() {
+    var userInput = document.getElementById('user-input').value;
+    if (userInput.trim() !== '') {
+        var chatOutput = document.getElementById('chat-output');
+        var newMessage = document.createElement('div');
+        newMessage.className = 'message';
+        newMessage.innerHTML = '<div class="message-body">' + userInput + '</div>';
+        chatOutput.appendChild(newMessage);
+        document.getElementById('user-input').value = '';
+    }
+});
+
+async function sendMessage() {
+  const userMessage = userInput.value.toLowerCase();
+  displayMessage('Sen', userMessage);
+
+  try {
+    // Gemini API'ye istek gönder
+    const response = await restClient.get('/v1/symbols');
+
+    // Cevap alındıktan sonra yapılacak işlemler
+    if (response && response.result) {
+        const botResponse = response.result;
+        displayMessage('Bot', botResponse);
+    } else {
+        displayMessage('Bot', "Üzgünüm, Gemini API'den yanıt alamadım.");
+    }
+  } catch (error) {
+    console.error('Gemini API isteği başarısız oldu:', error);
+    displayMessage('Bot', 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+  }
+
+  userInput.value = ''; // Kullanıcı girişini temizle
+}
+
+</script>
+<script src="node_modules/gemini-api/lib/gemini-api.js"></script>
+
+</body>
+</html>
+
+{% endblock %}

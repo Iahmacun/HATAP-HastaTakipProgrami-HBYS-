@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    .custom-h1 {
+      text-transform: capitalize;
+      background-color: #2D76BE; 
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      margin: 10px;
+    }
+    .custom-span {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .hatap {
+      font-weight: bold;
+      text-align: center;
+      font-size: 60px;
+      color: #fff;
+      background-color: #1976D2; 
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      margin: 10px;
+    }
+    .logout-button {
+      position: absolute;
+      top: 160px;
+      right: 45px;
+    }
+    .logout-button button {
+      background-color: #144372; 
+      color: #144372;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .logout-button button:hover {
+      background-color: #144372; 
+    }
+    .xcontent {
+      background-color: #144372; 
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  {% if user %}
+    <div class="custom-h1 shadow p-3 mb-5 bg-body rounded">
+      <button onclick="window.location.href = '/logout'" class="logout-button btn btn-danger">
+        Çıkış Yap
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+          <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"></path>
+        </svg>
+      </button>
+      <h1 class="hatap">HATAP</h1>
+      <span class="custom-span">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="125" height="125" x="0" y="0" viewBox="0 0 53 53" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><circle r="26.5" cx="26.5" cy="26.5" fill="#F3F2F2" shape="circle" transform="matrix(0.56,0,0,0.56,11.659999999999998,11.659999999999998)"></circle><g transform="matrix(0.5000000000000001,0,0,0.5000000000000001,13.24951539770703,13.250019289553181)"><path d="m18.613 41.552-7.907 4.313a7.106 7.106 0 0 0-1.269.903A26.377 26.377 0 0 0 26.5 53c6.454 0 12.367-2.31 16.964-6.144a7.015 7.015 0 0 0-1.394-.934l-8.467-4.233a3.229 3.229 0 0 1-1.785-2.888v-3.322c.238-.271.51-.619.801-1.03a19.482 19.482 0 0 0 2.632-5.304c1.086-.335 1.886-1.338 1.886-2.53v-3.546c0-.78-.347-1.477-.886-1.965v-5.126s1.053-7.977-9.75-7.977-9.75 7.977-9.75 7.977v5.126a2.644 2.644 0 0 0-.886 1.965v3.546c0 .934.491 1.756 1.226 2.231.886 3.857 3.206 6.633 3.206 6.633v3.24a3.232 3.232 0 0 1-1.684 2.833z" style="" fill="#756666" data-original="#e7eced" class="" opacity="1"></path><path d="M26.953.004C12.32-.246.254 11.414.004 26.047-.138 34.344 3.56 41.801 9.448 46.76a7.041 7.041 0 0 1 1.257-.894l7.907-4.313a3.23 3.23 0 0 0 1.683-2.835v-3.24s-2.321-2.776-3.206-6.633a2.66 2.66 0 0 1-1.226-2.231v-3.546c0-.78.347-1.477.886-1.965v-5.126S15.696 8 26.499 8s9.75 7.977 9.75 7.977v5.126c.54.488.886 1.185.886 1.965v3.546c0 1.192-.8 2.195-1.886 2.53a19.482 19.482 0 0 1-2.632 5.304c-.291.411-.563.759-.801 1.03V38.8c0 1.223.691 2.342 1.785 2.888l8.467 4.233a7.05 7.05 0 0 1 1.39.932c5.71-4.762 9.399-11.882 9.536-19.9C53.246 12.32 41.587.254 26.953.004z" style="" fill="#c2b2b2" data-original="#556080" class="" opacity="1"></path></g></svg>
+        {{ user.firstname }}
+        {{ user.lastname }}
+        {{ user.age }}
+      </span>
+    </div>
+    {% if user.userType == 1 %}
+      <a href="/admin/resources/Users">AdminJs</a>
+    {% endif %}
+  {% endif %}
+  <br> <br>
+  {% block content %}
+    <div class="xcontent">
+      <h1 style="color: #0288D1;">My First Heading</h1> 
+      <p style="color: #0288D1;">My first paragraph.</p> 
+    </div>
+  {% endblock %}
+</body>
+</html>
