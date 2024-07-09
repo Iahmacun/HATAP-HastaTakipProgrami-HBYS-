@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HATAP - Hasta Takip Sistemi</title>
 </head>
 <body>
     <header>
         <h1>HATAP - Hasta Takip Sistemi</h1>
-        <p>HATAP, sağlık kuruluşlarında hastaların takibi için geliştirilmiş bir sistemdir. Bu sistem, hastaların kaydedilmesi, durumlarının güncellenmesi ve raporlanması gibi işlevleri sağlar.</p>
+        <p>HATAP, sağlık kuruluşlarında hastaların takibi için geliştirilmiş bir sistemdir. Bu sistem, hastaların kaydedilmesi, durumlarının güncellenmesi, raporlanması ve hasta ile doktor arasında anlık etkileşim sağlanması gibi işlevleri sağlar. Ayrıca uzak mesafede veya hastaneye ulaşım zorluğu olan kişilere kolaylıkla erişim sağlayarak hastanelerdeki yoğunluğu azaltmaya da yardımcı olur.</p>
     </header>
 
 <section>
@@ -16,23 +17,25 @@
             <li><strong>Hasta Kaydı:</strong> Yeni hastaların sisteme kaydedilmesi.</li>
             <li><strong>Hasta Takibi:</strong> Hastaların durumlarının güncellenmesi ve takip edilmesi.</li>
             <li><strong>Raporlama:</strong> İstatistiklerin ve raporların oluşturulması.</li>
-            <li><strong>Etkileşim:</strong> Hasta ve doktorun anlık olarak etkileşim halinde olmaları.</li>
-            <li><strong>Verileri Saklama:</strong> Verilerin saklanıp korunması</li>
+            <li><strong>Anlık Etkileşim:</strong> Hasta ile doktor arasında anlık iletişim sağlanması.</li>
+            <li><strong>Uzaktan Erişim:</strong> Uzak mesafede veya hastaneye ulaşım zorluğu olan kişilere kolaylıkla erişim sağlanması.</li>
+            <li><strong>Yoğunluk Azaltma:</strong> Hastanelerdeki yoğunluğun azaltılmasına yardımcı olacak özellikler.</li>
         </ul>
-    </section>
+ </section>
 <img src="https://media.discordapp.net/attachments/653197194060365834/1250114659227537419/image.png?ex=668d5c00&is=668c0a80&hm=133f388747ef4d2c9aa650ab37fa2811e56a36e2995965532c57ab8d983299ad&=&format=webp&quality=lossless" ">
-<section>
+ <section>
         <h2>Kurulum</h2>
         <h3>Gereksinimler</h3>
         <p>Projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması gereklidir:</p>
         <ul>
             <li>Node.js</li>
             <li>MongoDB</li>
+            <!-- Gereksinimler buraya eklenebilir -->
         </ul>
 
-<h3>Kurulum Adımları</h3>
-     <ol>
-            <li><strong>Projeyi İndirme:</strong>
+ <h3>Kurulum Adımları</h3>
+        <ol>
+        <li><strong>Projeyi İndirme:</strong>
                 <pre><code>git clone https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git
 cd HATAP-HastaTakipSistemi-</code></pre>
             </li>
@@ -46,7 +49,7 @@ cd HATAP-HastaTakipSistemi-</code></pre>
         <p>Bu adımları tamamladıktan sonra, projeniz adresinde çalışacaktır: <code>http://localhost:3000</code>.</p>
     </section>
 
-<section>
+ <section>
         <h2>Katkıda Bulunma</h2>
         <ol>
             <li>Projeyi fork edin (<code>https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git</code>).</li>
