@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>HATAP - Hasta Takip Sistemi</h1>
+        <h1>HATAP - Hasta Takip Programı</h1>
         <p>HATAP, sağlık kuruluşlarında hastaların takibi için geliştirilmiş bir sistemdir. Bu sistem, hastaların kaydedilmesi, durumlarının güncellenmesi, raporlanması ve hasta ile doktor arasında anlık etkileşim sağlanması gibi işlevleri sağlar. Ayrıca uzak mesafede veya hastaneye ulaşım zorluğu olan kişilere kolaylıkla erişim sağlayarak hastanelerdeki yoğunluğu azaltmaya da yardımcı olur.</p>
     </header>
 
@@ -36,8 +36,8 @@
  <h3>Kurulum Adımları</h3>
         <ol>
         <li><strong>Projeyi İndirme:</strong>
-                <pre><code>git clone https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git
-cd HATAP-HastaTakipSistemi-</code></pre>
+                <pre><code>git clone https://github.com/Iahmacun/HATAP-HastaTakipProgrami.git
+cd HATAP-HastaTakipProgrami</code></pre>
             </li>
             <li><strong>Bağımlılıkları Yükleme:</strong>
                 <pre><code>npm install</code></pre>
@@ -56,7 +56,7 @@ cd HATAP-HastaTakipSistemi-</code></pre>
  <section>
         <h2>Katkıda Bulunma</h2>
         <ol>
-            <li>Projeyi fork edin (<code>https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git</code>).</li>
+            <li>Projeyi fork edin (<code>https://github.com/Iahmacun/HATAP-HastaTakipProgrami.git</code>).</li>
             <li>Yeni özellikler ekleyin veya hataları düzeltin.</li>
             <li>Değişikliklerinizi commit edin (<code>git commit -am 'Yeni özellik: ...'</code>).</li>
             <li>Bir pull request açın.</li>
