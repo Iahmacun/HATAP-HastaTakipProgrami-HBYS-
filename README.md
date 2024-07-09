@@ -18,7 +18,7 @@
             <li><strong>Raporlama:</strong> İstatistiklerin ve raporların oluşturulması.</li>
         </ul>
     </section>
-<img src="https://media.discordapp.net/attachments/653197194060365834/1250114659227537419/image.png?ex=668d5c00&is=668c0a80&hm=133f388747ef4d2c9aa650ab37fa2811e56a36e2995965532c57ab8d983299ad&=&format=webp&quality=lossless&width=1180&height=583" idth="500" height="600">
+<img src="https://media.discordapp.net/attachments/653197194060365834/1250114659227537419/image.png?ex=668d5c00&is=668c0a80&hm=133f388747ef4d2c9aa650ab37fa2811e56a36e2995965532c57ab8d983299ad&=&format=webp&quality=lossless&width=1180&height=583" ">
 <section>
         <h2>Kurulum</h2>
         <h3>Gereksinimler</h3>
