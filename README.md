@@ -16,6 +16,8 @@
             <li><strong>Hasta Kaydı:</strong> Yeni hastaların sisteme kaydedilmesi.</li>
             <li><strong>Hasta Takibi:</strong> Hastaların durumlarının güncellenmesi ve takip edilmesi.</li>
             <li><strong>Raporlama:</strong> İstatistiklerin ve raporların oluşturulması.</li>
+            <li><strong>Etkileşim:</strong> Hasta ve doktorun anlık olarak etkileşim halinde olmaları.</li>
+            <li><strong>Verileri Saklama:</strong> Verilerin saklanıp korunması</li>
         </ul>
     </section>
 <img src="https://media.discordapp.net/attachments/653197194060365834/1250114659227537419/image.png?ex=668d5c00&is=668c0a80&hm=133f388747ef4d2c9aa650ab37fa2811e56a36e2995965532c57ab8d983299ad&=&format=webp&quality=lossless" ">
