@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HATAP - Hasta Takip Programı</title>
+    <title>HATAP - Hasta Takip Sistemi</title>
 </head>
 <body>
     <header>
@@ -11,7 +11,7 @@
         <p>HATAP, sağlık kuruluşlarında hastaların takibi için geliştirilmiş bir sistemdir. Bu sistem, hastaların kaydedilmesi, durumlarının güncellenmesi ve raporlanması gibi işlevleri sağlar.</p>
     </header>
 
-    <section>
+<section>
         <h2>Özellikler</h2>
         <ul>
             <li><strong>Hasta Kaydı:</strong> Yeni hastaların sisteme kaydedilmesi.</li>
@@ -20,18 +20,17 @@
         </ul>
     </section>
 
-    <section>
+<section>
         <h2>Kurulum</h2>
         <h3>Gereksinimler</h3>
         <p>Projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması gereklidir:</p>
         <ul>
             <li>Node.js</li>
             <li>MongoDB</li>
-            <!-- Gereksinimler buraya eklenebilir -->
         </ul>
 
-        <h3>Kurulum Adımları</h3>
-        <ol>
+<h3>Kurulum Adımları</h3>
+     <ol>
             <li><strong>Projeyi İndirme:</strong>
                 <pre><code>git clone https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git
 cd HATAP-HastaTakipSistemi-</code></pre>
@@ -46,7 +45,7 @@ cd HATAP-HastaTakipSistemi-</code></pre>
         <p>Bu adımları tamamladıktan sonra, projeniz adresinde çalışacaktır: <code>http://localhost:3000</code>.</p>
     </section>
 
-    <section>
+<section>
         <h2>Katkıda Bulunma</h2>
         <ol>
             <li>Projeyi fork edin (<code>https://github.com/Iahmacun/HATAP-HastaTakipSistemi-.git</code>).</li>
@@ -56,7 +55,7 @@ cd HATAP-HastaTakipSistemi-</code></pre>
         </ol>
     </section>
 
-    <footer>
+ <footer>
         <p><strong>Lisans:</strong> Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için <code>LICENSE</code> dosyasına bakınız.</p>
     </footer>
 </body>
