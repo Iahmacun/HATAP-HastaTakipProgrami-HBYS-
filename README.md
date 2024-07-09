@@ -31,7 +31,7 @@
             <li>Node.js</li>
             <li>MongoDB</li>
 
-        </ul>
+</ul>
 
  <h3>Kurulum Adımları</h3>
         <ol>
@@ -44,8 +44,12 @@ cd HATAP-HastaTakipSistemi-</code></pre>
             </li>
             <li><strong>Veritabanını Ayarlayın:</strong>
             </li>
-            <li>projeyi başlatın<code>node app.js</code>code></li>
-        </ol>
+            <li>projeyi başlatın</strong>
+                <pre><code>node app.js</code><pre>
+            </li>
+                
+ </li>
+</ol>
         <p>Bu adımları tamamladıktan sonra, projeniz adresinde çalışacaktır: <code>http://localhost:3000</code>.</p>
     </section>
 
