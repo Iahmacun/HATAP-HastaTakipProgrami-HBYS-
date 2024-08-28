@@ -26,6 +26,8 @@
     </section>
 
  <img src="https://res.cloudinary.com/dzo9wgalo/image/upload/v1724844472/Screenshot_9_okf489.png" alt="HATAP Programı Görseli">
+  <img src="https://res.cloudinary.com/dzo9wgalo/image/upload/v1724844667/f2ee571d-b182-482a-a8d8-840c7b9a131e.png" alt="HATAP Programı Görseli">
+
 
  <section>
         <h2>Kurulum</h2>
