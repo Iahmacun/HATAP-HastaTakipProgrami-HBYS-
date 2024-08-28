@@ -14,18 +14,18 @@
             background-color: #f4f4f4;
         }
 
-        header {
+ header {
             background-color: #007bff;
             color: white;
             padding: 20px 0;
             text-align: center;
         }
 
-        header h1 {
+header h1 {
             margin: 0;
         }
 
-        section {
+ section {
             margin: 20px 0;
             padding: 20px;
             background-color: white;
@@ -33,38 +33,35 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        section h2 {
+  section h2 {
             color: #007bff;
             margin-top: 0;
         }
 
-        ul, ol {
+  ul, ol {
             margin-left: 20px;
         }
-
-        img {
+     img {
             display: block;
             margin: 20px auto;
             max-width: 100%;
             height: auto;
             border-radius: 5px;
         }
-
-        footer {
+    footer {
             text-align: center;
             padding: 10px 0;
             background-color: #007bff;
             color: white;
             margin-top: 20px;
         }
-
-        code {
+     code {
             background-color: #f8f8f8;
             padding: 2px 5px;
             border-radius: 3px;
         }
 
-        pre code {
+   pre code {
             display: block;
             padding: 10px;
             background-color: #e8e8e8;
@@ -80,7 +77,7 @@
         <p>HATAP, sağlık kuruluşlarında hastaların takibi için geliştirilmiş bir sistemdir. Bu sistem, hastaların kaydedilmesi, durumlarının güncellenmesi, raporlanması ve hasta ile doktor arasında anlık etkileşim sağlanması gibi işlevleri sağlar. Ayrıca, uzak mesafede veya hastaneye ulaşım zorluğu olan kişilere kolaylıkla erişim sağlayarak hastanelerdeki yoğunluğu azaltmaya da yardımcı olur.</p>
     </header>
 
-    <section>
+  <section>
         <h2>Özellikler</h2>
         <ul>
             <li><strong>Hasta Kaydı:</strong> Yeni hastaların sisteme kaydedilmesi.</li>
@@ -92,19 +89,19 @@
         </ul>
     </section>
 
-    <img src="https://media.discordapp.net/attachments/653197194060365834/1250114659227537419/image.png?ex=668d5c00&is=668c0a80&hm=133f388747ef4d2c9aa650ab37fa2811e56a36e2995965532c57ab8d983299ad&=&format=webp&quality=lossless" alt="HATAP Programı Görseli">
+ <img src="https://res.cloudinary.com/dzo9wgalo/image/upload/v1724844472/Screenshot_9_okf489.png" alt="HATAP Programı Görseli">
 
-    <section>
+ <section>
         <h2>Kurulum</h2>
 
-        <h3>Gereksinimler</h3>
+ <h3>Gereksinimler</h3>
         <p>Projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması gereklidir:</p>
         <ul>
             <li>Node.js</li>
             <li>MongoDB</li>
         </ul>
 
-        <h3>Kurulum Adımları</h3>
+   <h3>Kurulum Adımları</h3>
         <ol>
             <li><strong>Projeyi İndirme:</strong>
                 <pre><code>git clone https://github.com/Iahmacun/HATAP-HastaTakipProgrami.git
@@ -121,7 +118,7 @@ cd HATAP-HastaTakipProgrami</code></pre>
         <p>Bu adımları tamamladıktan sonra, projeniz <code>http://localhost:3000</code> adresinde çalışacaktır.</p>
     </section>
 
-    <section>
+<section>
         <h2>Katkıda Bulunma</h2>
         <ol>
             <li>Projeyi fork edin (<code>https://github.com/Iahmacun/HATAP-HastaTakipProgrami.git</code>).</li>
@@ -131,7 +128,7 @@ cd HATAP-HastaTakipProgrami</code></pre>
         </ol>
     </section>
 
-    <footer>
+ <footer>
         <p><strong>Lisans:</strong> Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için <code>LICENSE</code> dosyasına bakınız.</p>
     </footer>
 </body>
