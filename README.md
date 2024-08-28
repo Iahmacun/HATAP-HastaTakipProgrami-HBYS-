@@ -5,70 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HATAP - Hasta Takip Programı</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
- header {
-            background-color: #007bff;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-header h1 {
-            margin: 0;
-        }
-
- section {
-            margin: 20px 0;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-  section h2 {
-            color: #007bff;
-            margin-top: 0;
-        }
-
-  ul, ol {
-            margin-left: 20px;
-        }
-     img {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-    footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #007bff;
-            color: white;
-            margin-top: 20px;
-        }
-     code {
-            background-color: #f8f8f8;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-
-   pre code {
-            display: block;
-            padding: 10px;
-            background-color: #e8e8e8;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-    </style>
+    
 </head>
 
 <body>
